@@ -1,0 +1,210 @@
+IlpohonBiner.cpp
+/Mendemonstrasikan pohon biner
+#include <iostream>
+#include <stack>
+#include <conio.h>
+using namespace std;
+class Simpul
+}
+public:
+int iData; //item data (kunci)
+double dData; I/item data
+Simpul* pAnakKiri; llanak kiri dari simpul
+Simpul* pAnakKanan; /lanak kanan dari simpul
+//konstruktor
+Simpul() : iData(0), dData(0.0), pAnakKiri(NULL),
+pAnakKanan(NULL)
+{ }
+-Simpul() //destruktor
+( cout << "X-" < IData <<""; )
+void tampilSimpul() //menampilkan simpul, contoh (75, 7.5)
+cout << "(" << iData << "," << dData << ") ";
+): //akhir kelas Simpul
+class Pohon
+private:
+Simpul" pAkar; llsimpul pertama pada pohon
+public:
+Pohon() : pAkar(NULL) //konstruktor
+(}
+Simpul" cari(int kunci) //mencari simpul dengan kunci tertentu
+{ //(asumsi pohon
+Simpul" pSkrg = pAkar; lldiawali di akar
+while(pSkrg->iData != kunci) //ketika tidak cocok,
+(Buosoy-
+if(kunci < pSkrg->iData) //ke kiri?
+pSkrg = pSkrg->pAnakKiri;
+eise llatau ke kanan?
+pSkrg = pSkrg->pAnakKanan;
+if(pSkrg == NULL) /jika tidak ada anak,
+return NULL; I/tidak ditemukan
+return pSkrg: liditemukan
+} llakhir cari()
+void sisip(int id, double dd) //menyisipkan simpul baru
+Simpul" SimpulBaru = new Simpul; l/menciptakan simpul baru
+SimpulBaru->iData id; limenyisipkan data
+SimpulBaru->dData = dd;
+if(pAkar==NULL) //tidak ada simpul pada akar
+PAkar = SimpulBaru;
+else //akar ditempati
+Simpul" pSkrg = pAkar; lldiawali di akar
+Simpul" plnduk;
+while(true) //(keluar scr internal)
+plnduk = pSkrg;
+if(id < pSkrg->iData) //ke kiri?
+pSkrg = pSkrg->pAnakKiri;
+if(pSkrg == NULL) /jika di akhir,
+{ //sisip di kiri
+}
+plnduk->pAnakKiri = SimpulBaru;
+return;
+} l/akhir if ke kiri
+else llatau ke kanan?
+pSkrg = pSkrg->pAnakKanan;
+if(pSkrg% 3D= NULL) /jika di akhir,
+{ //sisip di kanan
+plnduk->pAnakKanan =
+SimpulBaru;
+return;
+} llakhir else ke kanan
+} llakhir while
+} l/akhir else tidak di akar
+} llakhir sisip()
+void jelajah(int tipeJelajah)
+switch(tipeJelajah)
+}
+case 1: cout << "InPenjelajahan Preorder: ";
+preOrder(pAkar);
+break;
+case 2: cout < "\nPenjelajahan Inorder: ";
+inOrder(pAkar);
+break;
+case 3: cout << "\nPenjelajahan Postorder: ";
+postOrder(pAkar);
+break;
+cout << endl;
+void preOrder(Simpul" pAkarLokal)
+if(pAkarLokal != NULL)
+}
+cout << pAkarLokal->iData << " "; l/menampilkan simpul
+preOrder(pAkarlokal->pAnakKiri); llanak kiri
+preOrder(pAkarLokal->pAnakKanan); //anak kanan
+void inOrder(Simpul" pAkarLokal)
+}
+if(pAkarLokal != NULL)
+}
+inOrder(pAkarLokal->pAnakKiri); /llanak kiri
+cout << pAkarLokal->iData << ""; l/menampilkan simpul
+inOrder(pAkarLokal->pAnakKanan); llanak kanan
+{
+{
+void postOrder(Simpul" pAkarLokal)
+if(pAkarLokal != NULL)
+}
+postOrder(pAkarLokal->pAnakkiri); l/anak kiri
+postOrder(pAkarLokal->pAnakKanan); //anak kanan
+cout << pAkarLokal->iData << " "; //menampilkan simpul
+void tampilPohon()
+}
+stack<Simpul*> tumpukan;
+tumpukan.push(pAkar);
+int jumSpasi = 32;
+bool apaBarisKosong = false;
+cout <<"...
+cout << endl;
+while(apaBariskosong==false)
+stack<Simpult> turmpukanL.okal;
+apaBarisKosong = true:
+for(int j-0; j<jumSpast; j++)
+.>> inoo
+while(tumpukan.empty()=3false)
+Simpul" temp = turmpukan.top():
+(dod undu
+if(temp != NULL)
+cout << temp->iData;
+turmpukanLokal.push(temp->pAnakKiri);
+tumpukanLokal.push(temp->pAnakKanan):
+if(termp->pAnakKiri != NULL || temp-
+>pAnakkanan != NULL)
+apaBarisKosong = false;
+asje
+> Inoo
+turmpukanLokal.push(NULL);
+tumpukanLokal.push(NULL);
+for(int j=0, j<jumSpasi"2-2; j++)
+.>> inoo
+cout << endl;
+jumSpasi /= 2;
+while(tumpukanLokal.empty()=3false)
+tumpukan.push( tumpukanLokal.top()):
+tumpukanLokal.pop():
+Cout <<
+cout << endl;
+} llakhir tampilPohon()
+void hapus() //menghapus semua simpul
+{ hapusRekursif(pAkar); } //mulai dari akar
+void hapusRekursif(Simpul" pAkarLokal) //menghapus simpul-simpul
+if(pAkarLokal = NULL)
+}
+hapusRekursif(pAkarLokal->pAnakKiri); lisubpohon kiri
+hapusRekursif(pAkarLokal->pAnakkanan); //subpohon
+kanan
+delete pAkarlokal; I/menghapus simpul ini
+} llakhir kelas Pohon
+int main()
+int nilai,
+char pilihan = NULL:
+Simpul" ditemukan;
+Pohon pohon; Imenciptakan Pohon
+pohon.sisip(50, 5.0), l/menyisipkan pohon-pohon
+pohon.sisip(25, 2.5);
+pohon.sisip(75, 7.5),
+pohon.sisip(12, 1.2);
+pohon.sisip(37, 3.7);
+pohon.sisip(43, 4.3);
+pohon.sisip(30, 3.0),
+pohon.sisip(33, 3.3);
+pohon.sisip(87, 8.7):
+pohon.sisip(93, 9.3);
+pohon.sisip(97, 9.7),
+while(pilihan != "k") //berinteraksi dengan pengguna
+{ l/sampai pengguna mengetikkan 'k
+cout << "masukkan huruf pertama dari ":
+cout << "tampil, sisip, cari, jelajah, atau keluar
+cin >> pilihan,
+switch(pilihan)
+case T: l/menampilkan Pohon
+pohon.tampilPohon():
+break;
+case 's': //menyisipkan sebuah Simpul
+cout << "Masukkan nilai yang akan disisipkan: ";
+cin >> nilai;
+pohon.sisip(nilai, nilai + 0.9);
+break;
+case 'c': //mencari sebuah Simpul
+cout << "Masukkan nilai yang akan dicari: ":
+cin >> nilai;
+ditemukan = pohon.cari(nilai);
+if(ditemukan != NULL)
+cout << "Ditemukan: ",
+ditemukan->tampilSimpul().
+cout << endl,
+else
+cout << "Tidak ditemukan." << nilai << endl;
+break;
+case T: //menjelajah Pohon
+cout << "Masukkan tipe jelajah (1 = preorder, "
+« 2 = inorder, 3 = postorder): ";
+cin >> nilai;
+pohon.jelajah(nilai);
+break
+case k: I/keluar program
+cout << endl;
+:)sndeyuoyod
+break;
+default:
+cout << "Entri tak-validin":
+) llakhir switch
+) llakhir while
+getch():
+return 0;
+} l/akhir main()
